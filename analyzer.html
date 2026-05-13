@@ -22,23 +22,22 @@
     </nav>
 
     <main class="container">
-        <h1>🔍 Проверка сообщения на предмет угрозы</h1>
+        <h1> Проверка сообщения на предмет угрозы</h1>
         
         <section class="analyzer-section">
             <p class="analyzer-desc">Введите текст (сообщение, пост, комментарий), и система предварительно оценит, содержит ли он признаки вербальной угрозы или противоправных призывов.</p>
             
             <div class="analyzer-input">
-                <textarea id="userText" rows="8" placeholder="Введите текст для анализа...&#10;&#10;Например:&#10;«Я тебя уничтожу, если ты ещё раз это сделаешь»&#10;«Долой существующую власть! Хватит терпеть!»&#10;«Завтра жди последствий, ты пожалеешь»"></textarea>
-                <button id="analyzeBtn">🔍 Провести анализ</button>
+                <button id="analyzeBtn"> Провести анализ</button>
             </div>
             
             <div id="analysisResult" class="analysis-result" style="display: none;">
-                <h3>📋 Результат предварительного анализа:</h3>
+                <h3> Результат предварительного анализа:</h3>
                 <div id="resultContent"></div>
             </div>
             
             <div class="analyzer-note">
-                <strong>⚠️ Важно:</strong> Данный инструмент — демонстрационный и не заменяет полноценную судебную лингвистическую экспертизу. Окончательное заключение даётся только квалифицированным экспертом.
+                <strong> Важно:</strong> Данный инструмент — демонстрационный и не заменяет полноценную судебную лингвистическую экспертизу. Окончательное заключение даётся только квалифицированным экспертом.
             </div>
         </section>
     </main>
@@ -117,7 +116,7 @@
                     ${foundDirect.length === 0 && foundIndirect.length === 0 && foundViolence.length === 0 && foundImperatives.length === 0 && !hasImperative ? '<p>⚠️ Явных маркеров угрозы не обнаружено</p>' : ''}
                 </div>
                 <div class="conclusion ${levelClass}">
-                    <strong>📌 Предварительное заключение:</strong> ${conclusion}
+                    <strong> Предварительное заключение:</strong> ${conclusion}
                 </div>
             `;
         }
