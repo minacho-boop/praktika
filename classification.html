@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классификация экспертиз</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🔍 Лингвоэксперт</div>
+            <ul>
+                <li><a href="index.html">Что это?</a></li>
+                <li><a href="classification.html" class="active">Классификация</a></li>
+                <li><a href="cases.html">Кейсы и факты</a></li>
+                <li><a href="statistics.html">Статистика</a></li>
+                <li><a href="analyzer.html">Проверка текста</a></li>
+                <li><a href="guide.html">Памятка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>📋 Классификация лингвистических экспертиз</h1>
+        
+        <section class="table-section">
+            <h2>Классификация по параметрам</h2>
+            <table id="classifTable" class="display">
+                <thead>
+                    <tr><th>Параметр</th><th>Вид</th><th>Описание</th><th>Пример</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="2">По формальному статусу</td><td>Официальная</td><td>Назначается судом, имеет статус доказательства</td><td>Экспертиза по делу об экстремизме</td></tr>
+                    <tr><td>Инициативная</td><td>По заказу частных лиц, требует утверждения судом</td><td>Экспертиза по иску о защите чести</td></tr>
+                    <tr><td rowspan="2">По количеству экспертов</td><td>Комиссионная</td><td>Несколько экспертов, сложные/общественно значимые дела</td><td>Дела о разжигании межнациональной розни</td></tr>
+                    <tr><td>Некомиссионная</td><td>Один эксперт</td><td>Стандартные гражданские споры</td></tr>
+                    <tr><td rowspan="3">По объекту</td><td>Звучащей речи</td><td>Акустический анализ, идентификация говорящего</td><td>Анализ телефонных разговоров</td></tr>
+                    <tr><td>Письменного текста</td><td>Морфологический, синтаксический, семантический анализ</td><td>Анализ постов в соцсетях</td></tr>
+                    <tr><td>Вербально-визуальная</td><td>Текст + изображение</td><td>Оценка товарных знаков</td></tr>
+                    <tr><td rowspan="2">По объему</td><td>Холистическая</td><td>Целостный анализ всего текста</td><td>Анализ литературного произведения</td></tr>
+                    <tr><td>Частная</td><td>Анализ отдельных слов или конструкций</td><td>Толкование правовых норм</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="table-section">
+            <h2>Классификация по уровням языка</h2>
+            <table id="langLevelTable" class="display">
+                <thead>
+                    <tr><th>Уровень</th><th>Вид экспертизы</th><th>Что исследует</th><th>Пример из практики</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Графика</td><td>Почерковедческая</td><td>Рукописный текст, подпись</td><td>Определение автора анонимной записки</td></tr>
+                    <tr><td>Фонетика</td><td>Фонетическая</td><td>Акустические характеристики, голос</td><td>Идентификация говорящего по записи</td></tr>
+                    <tr><td>Морфология</td><td>Морфологическая</td><td>Словоформы, части речи</td><td>Выявление грамматических ошибок в договоре</td></tr>
+                    <tr><td>Синтаксис</td><td>Синтаксическая</td><td>Структура предложений</td><td>Анализ сложных конструкций в законах</td></tr>
+                    <tr><td>Семантика</td><td>Семантическая</td><td>Значение слов и выражений</td><td>Толкование неоднозначных фраз в иске</td></tr>
+                    <tr><td>Стилистика</td><td>Лингвостилистическая</td><td>Стилевые особенности</td><td>Определение авторского стиля</td></tr>
+                    <tr><td>Дискурс</td><td>Дискурсивная</td><td>Связный текст, диалог</td><td>Анализ переписки в мессенджере</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="image-section">
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/29/06/17/laptop-1868008_640.jpg" alt="Работа эксперта">
+                    <p>Рабочее место лингвоэксперта</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Судебная лингвистическая экспертиза</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#classifTable').DataTable({
+                language: { url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json' },
+                paging: false,
+                ordering: true
+            });
+            $('#langLevelTable').DataTable({
+                language: { url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/ru.json' },
+                paging: false,
+                ordering: true
+            });
+        });
+    </script>
+</body>
+</html>

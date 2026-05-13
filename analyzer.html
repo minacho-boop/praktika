@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка текста на угрозы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🔍 Лингвоэксперт</div>
+            <ul>
+                <li><a href="index.html">Что это?</a></li>
+                <li><a href="classification.html">Классификация</a></li>
+                <li><a href="cases.html">Кейсы и факты</a></li>
+                <li><a href="statistics.html">Статистика</a></li>
+                <li><a href="analyzer.html" class="active">Проверка текста</a></li>
+                <li><a href="guide.html">Памятка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>🔍 Проверка сообщения на предмет угрозы</h1>
+        
+        <section class="analyzer-section">
+            <p class="analyzer-desc">Введите текст (сообщение, пост, комментарий), и система предварительно оценит, содержит ли он признаки вербальной угрозы или противоправных призывов.</p>
+            
+            <div class="analyzer-input">
+                <textarea id="userText" rows="8" placeholder="Введите текст для анализа...&#10;&#10;Например:&#10;«Я тебя уничтожу, если ты ещё раз это сделаешь»&#10;«Долой существующую власть! Хватит терпеть!»&#10;«Завтра жди последствий, ты пожалеешь»"></textarea>
+                <button id="analyzeBtn">🔍 Провести анализ</button>
+            </div>
+            
+            <div id="analysisResult" class="analysis-result" style="display: none;">
+                <h3>📋 Результат предварительного анализа:</h3>
+                <div id="resultContent"></div>
+            </div>
+            
+            <div class="analyzer-note">
+                <strong>⚠️ Важно:</strong> Данный инструмент — демонстрационный и не заменяет полноценную судебную лингвистическую экспертизу. Окончательное заключение даётся только квалифицированным экспертом.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Судебная лингвистическая экспертиза</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const THREAT_MARKERS = {
+            direct: ['уничтожу', 'убью', 'зарежу', 'пристрелю', 'взорву', 'подорву', 'растерзаю', 'ликвидирую', 'прикончу', 'задушу'],
+            indirect: ['пожалеешь', 'последствия', 'будешь отвечать', 'расплатишься', 'тебе не поздоровится', 'ты ответишь', 'пеняй на себя'],
+            violence: ['смерть', 'кровь', 'убийство', 'насилие', 'расправа', 'возмездие', 'агрессия']
+        };
+        
+        const IMPERATIVE_MARKERS = {
+            direct: ['долой', 'вперёд', 'прочь', 'вон', 'хватит', 'требуется', 'следует', 'обязаны', 'должны', 'прекратите', 'перестаньте'],
+            forms: ['давай', 'давайте', 'призываю', 'требую', 'приказываю', 'умоляю', 'прошу']
+        };
+        
+        function analyzeText() {
+            const text = document.getElementById('userText').value;
+            if (!text.trim()) {
+                alert('Введите текст для анализа');
+                return;
+            }
+            
+            const lowerText = text.toLowerCase();
+            
+            const foundDirect = THREAT_MARKERS.direct.filter(m => lowerText.includes(m));
+            const foundIndirect = THREAT_MARKERS.indirect.filter(m => lowerText.includes(m));
+            const foundViolence = THREAT_MARKERS.violence.filter(m => lowerText.includes(m));
+            const foundImperatives = IMPERATIVE_MARKERS.direct.filter(m => lowerText.includes(m));
+            const foundForms = IMPERATIVE_MARKERS.forms.filter(m => lowerText.includes(m));
+            const hasImperative = /сделай|выйди|приди|отойди|скажи|дай|покинь|остановись|\!/.test(lowerText);
+            
+            let threatLevel = 0;
+            threatLevel += foundDirect.length * 30;
+            threatLevel += foundIndirect.length * 15;
+            threatLevel += foundViolence.length * 20;
+            threatLevel += foundImperatives.length * 25;
+            threatLevel += foundForms.length * 15;
+            threatLevel += hasImperative ? 20 : 0;
+            threatLevel = Math.min(threatLevel, 100);
+            
+            let levelClass = '', levelText = '', conclusion = '';
+            if (threatLevel >= 60) {
+                levelClass = 'high';
+                levelText = 'ВЫСОКИЙ';
+                conclusion = 'Текст содержит явные признаки угрозы или призыва. Рекомендуется воздержаться от публикации и проконсультироваться с юристом.';
+            } else if (threatLevel >= 30) {
+                levelClass = 'medium';
+                levelText = 'СРЕДНИЙ';
+                conclusion = 'Текст содержит отдельные маркеры, которые могут быть интерпретированы как угроза или призыв в определённом контексте.';
+            } else {
+                levelClass = 'low';
+                levelText = 'НИЗКИЙ';
+                conclusion = 'Явных признаков угрозы или призыва не обнаружено. Однако окончательный вывод может дать только эксперт с учётом контекста.';
+            }
+            
+            document.getElementById('analysisResult').style.display = 'block';
+            document.getElementById('resultContent').innerHTML = `
+                <div class="threat-meter ${levelClass}">
+                    <span class="meter-label">Уровень угрозы: ${levelText}</span>
+                    <div class="meter-bar"><div class="meter-fill ${levelClass}" style="width: ${threatLevel}%"></div></div>
+                    <span class="meter-value">${threatLevel}%</span>
+                </div>
+                <div class="details">
+                    <h4>🔍 Обнаруженные маркеры:</h4>
+                    ${foundDirect.length ? `<p><strong>Прямые угрозы:</strong> ${foundDirect.join(', ')}</p>` : ''}
+                    ${foundIndirect.length ? `<p><strong>Косвенные угрозы:</strong> ${foundIndirect.join(', ')}</p>` : ''}
+                    ${foundViolence.length ? `<p><strong>Лексика насилия:</strong> ${foundViolence.join(', ')}</p>` : ''}
+                    ${foundImperatives.length ? `<p><strong>Императивные маркеры:</strong> ${foundImperatives.join(', ')}</p>` : ''}
+                    ${hasImperative ? `<p><strong>Повелительное наклонение:</strong> обнаружено</p>` : ''}
+                    ${foundDirect.length === 0 && foundIndirect.length === 0 && foundViolence.length === 0 && foundImperatives.length === 0 && !hasImperative ? '<p>⚠️ Явных маркеров угрозы не обнаружено</p>' : ''}
+                </div>
+                <div class="conclusion ${levelClass}">
+                    <strong>📌 Предварительное заключение:</strong> ${conclusion}
+                </div>
+            `;
+        }
+        
+        document.getElementById('analyzeBtn').addEventListener('click', analyzeText);
+    </script>
+</body>
+</html>
