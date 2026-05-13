@@ -9,29 +9,27 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">🔍 Лингвоэксперт</div>
+            <div class="logo"> Лингвэксперт</div>
             <ul>
                 <li><a href="index.html">Что это?</a></li>
                 <li><a href="classification.html">Классификация</a></li>
                 <li><a href="cases.html">Кейсы и факты</a></li>
                 <li><a href="statistics.html">Статистика</a></li>
                 <li><a href="analyzer.html" class="active">Проверка текста</a></li>
-                <li><a href="guide.html">Памятка</a></li>
             </ul>
         </div>
     </nav>
 
     <main class="container">
-        <h1>📋 Проверка сообщения на предмет угрозы</h1>
-        
-        <!-- ============ ПАМЯТКА (ПЕРВАЯ) ============ -->
+        <h1> Проверка сообщения на предмет угрозы</h1>
+
         <div class="guide-warning">
             <span class="warning-icon">⚠️</span>
             <p><strong>Важно:</strong> Данный инструмент — демонстрационный и не заменяет полноценную судебную лингвистическую экспертизу. Окончательное заключение даётся только квалифицированным экспертом.</p>
         </div>
         
         <div class="guide-category red">
-            <h3>🔴 Что является угрозой?</h3>
+            <h3> Что является угрозой?</h3>
             <h4>Вербальные средства выражения угрозы</h4>
             <table class="guide-table">
                 <thead>
@@ -56,18 +54,17 @@
             <p class="checklist-note"><strong>Если хотя бы на один пункт ответ «Нет» — перефразируй.</strong></p>
         </div>
         
-        <!-- ============ ФОРМА АНАЛИЗА (ВТОРАЯ) ============ -->
         <section class="analyzer-section">
-            <h2>🔍 Интерактивная проверка текста</h2>
+            <h2> Интерактивная проверка текста</h2>
             <p class="analyzer-desc">Введите текст (сообщение, пост, комментарий), и система предварительно оценит, содержит ли он признаки вербальной угрозы или противоправных призывов.</p>
             
             <div class="analyzer-input">
-                <textarea id="userText" rows="6" placeholder="Введите текст для анализа...&#10;&#10;Например:&#10;«Я тебя уничтожу, если ты ещё раз это сделаешь»&#10;«Долой существующую власть! Хватит терпеть!»&#10;«Завтра жди последствий, ты пожалеешь»"></textarea>
-                <button id="analyzeBtn">🔍 Провести анализ</button>
+                <textarea id="userText" rows="6" placeholder="Введите текст для анализа..."></textarea>
+                <button id="analyzeBtn"> Провести анализ</button>
             </div>
             
             <div id="analysisResult" class="analysis-result" style="display: none;">
-                <h3>📋 Результат предварительного анализа:</h3>
+                <h3> Результат предварительного анализа:</h3>
                 <div id="resultContent"></div>
             </div>
         </section>
@@ -151,14 +148,13 @@
                     ${foundDirect.length === 0 && foundIndirect.length === 0 && foundViolence.length === 0 && foundImperatives.length === 0 && !hasImperative ? '<p>⚠️ Явных маркеров угрозы не обнаружено</p>' : ''}
                 </div>
                 <div class="conclusion ${levelClass}">
-                    <strong>📌 Предварительное заключение:</strong> ${conclusion}
+                    <strong> Предварительное заключение:</strong> ${conclusion}
                 </div>
             `;
         }
         
         document.getElementById('analyzeBtn').addEventListener('click', analyzeText);
         
-        // Добавляем возможность нажать Enter в текстовом поле
         document.getElementById('userText').addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
                 analyzeText();
