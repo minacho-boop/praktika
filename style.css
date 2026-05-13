@@ -534,18 +534,3 @@ footer {
     }
 }
 
-/* ===== ДЛЯ ПЕЧАТИ (если понадобится) ===== */
-@media print {
-    nav, footer, .analyzer-input button {
-        display: none;
-    }
-    
-    body {
-        font-size: 12pt;
-    }
-    
-    a {
-        text-decoration: none;
-        color: black;
-    }
-}
