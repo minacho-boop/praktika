@@ -155,9 +155,10 @@ function analyzeText() {
         <div class="conclusion ${threatInfo.class}">
             <strong> Заключение:</strong> ${threatInfo.conclusion}
         </div>
+        
     `;
 }
-
+ document.getElementById('analyzeBtn').addEventListener('click', analyzeText);
 });
     </script>
 </body>
