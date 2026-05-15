@@ -104,24 +104,20 @@
             const foundViolence = THREAT_MARKERS.violence.filter(m => lowerText.includes(m));
             const foundImperatives = IMPERATIVE_MARKERS.direct.filter(m => lowerText.includes(m));
             const foundForms = IMPERATIVE_MARKERS.forms.filter(m => lowerText.includes(m));
-            const hasImperative = /сделай|выйди|приди|отойди|скажи|дай|покинь|остановись|замолчи|прекрати|\!/.test(lowerText);
-            const hasExclamation = (text.match(/\!/g) || []).length;
-            
+
             let threatLevel = 0;
             threatLevel += foundDirect.length * 30;
             threatLevel += foundIndirect.length * 15;
             threatLevel += foundViolence.length * 20;
             threatLevel += foundImperatives.length * 25;
             threatLevel += foundForms.length * 15;
-            threatLevel += hasImperative ? 20 : 0;
-            threatLevel += Math.min(hasExclamation * 5, 15);
             threatLevel = Math.min(threatLevel, 100);
             
             let levelClass = '', levelText = '', conclusion = '';
             if (threatLevel >= 60) {
                 levelClass = 'high';
                 levelText = 'ВЫСОКИЙ';
-                conclusion = 'Текст содержит явные признаки угрозы или призыва. Рекомендуется воздержаться от публикации и проконсультироваться с юристом.';
+                conclusion = 'Текст содержит явные признаки угрозы или призыва. Рекомендуется воздержаться от публикации.';
             } else if (threatLevel >= 30) {
                 levelClass = 'medium';
                 levelText = 'СРЕДНИЙ';
@@ -129,7 +125,7 @@
             } else {
                 levelClass = 'low';
                 levelText = 'НИЗКИЙ';
-                conclusion = 'Явных признаков угрозы или призыва не обнаружено. Однако окончательный вывод может дать только эксперт с учётом контекста.';
+                conclusion = 'Явных признаков угрозы или призыва не обнаружено.';
             }
             
             document.getElementById('analysisResult').style.display = 'block';
@@ -140,15 +136,13 @@
                     <span class="meter-value">${threatLevel}%</span>
                 </div>
                 <div class="details">
-                    <h4>🔍 Обнаруженные маркеры:</h4>
+                    <h4> Обнаруженные маркеры:</h4>
                     ${foundDirect.length ? `<p><strong>Прямые угрозы:</strong> ${foundDirect.join(', ')}</p>` : ''}
                     ${foundIndirect.length ? `<p><strong>Косвенные угрозы:</strong> ${foundIndirect.join(', ')}</p>` : ''}
                     ${foundViolence.length ? `<p><strong>Лексика насилия:</strong> ${foundViolence.join(', ')}</p>` : ''}
                     ${foundImperatives.length ? `<p><strong>Императивные маркеры:</strong> ${foundImperatives.join(', ')}</p>` : ''}
-                    ${foundForms.length ? `<p><strong>Побудительные конструкции:</strong> ${foundForms.join(', ')}</p>` : ''}
-                    ${hasImperative ? `<p><strong>Повелительное наклонение:</strong> обнаружено</p>` : ''}
-                    ${hasExclamation > 0 ? `<p><strong>Восклицательные знаки:</strong> ${hasExclamation} шт. (усиливает экспрессию)</p>` : ''}
-                    ${foundDirect.length === 0 && foundIndirect.length === 0 && foundViolence.length === 0 && foundImperatives.length === 0 && !hasImperative ? '<p>⚠️ Явных маркеров угрозы не обнаружено</p>' : ''}
+                    ${foundForms.length ? `<p><strong>Побудительные конструкции:</strong> ${foundForms.join(', ')}</p>` : ''}\
+                   
                 </div>
                 <div class="conclusion ${levelClass}">
                     <strong> Предварительное заключение:</strong> ${conclusion}
