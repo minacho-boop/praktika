@@ -533,4 +533,57 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Кейсы с изображением */
+.case-card {
+    display: flex;
+    gap: 25px;
+    border: 1px solid #d0d7de;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #ffffff;
+}
 
+.case-image {
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.case-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #d0d7de;
+}
+
+.case-content {
+    flex: 1;
+}
+
+.case-content h3 {
+    margin-top: 0;
+    color: #1a3a5c;
+}
+
+.case-content blockquote {
+    margin: 15px 0;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-left: 4px solid #c9a03d;
+    font-style: italic;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .case-card {
+        flex-direction: column;
+    }
+    
+    .case-image {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .case-image img {
+        max-width: 250px;
+    }
+}
