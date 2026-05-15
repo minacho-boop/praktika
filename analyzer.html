@@ -36,18 +36,18 @@
                     <tr><th>Форма</th><th>Пример</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Лексические маркеры: языковые средства со сниженной окраской</td><td>«Вот курва старая!»</td></tr>
-                    <tr><td>Использование зоосемантических метафор</td><td>«Закрой свою пасть, пёс!»</td></tr>
-                    <tr><td>Повелительное наклонение</td><td>«Молчи!», «Замолчи!»</td></tr>
-                    <tr><td>Глаголы физического воздействия</td><td>«бить», «ударить», «оторвать», «уничтожу»</td></tr>
-                    <tr><td>Глаголы социальных отношений, влияния</td><td>«вляпать статью», «посадить», «найти управу»</td></tr>
-                    <tr><td>Конструкции с условным компонентом</td><td>«Если не сделаешь Х, то я сделаю Y»</td></tr>
+                    <tr><td>Лексические маркеры: языковые средства со сниженной окраской</th><td>«Вот курва старая!»</th></tr>
+                    <tr><td>Использование зоосемантических метафор</th><td>«Закрой свою пасть, пёс!»</th></tr>
+                    <tr><td>Повелительное наклонение</th><td>«Молчи!», «Замолчи!»</th></tr>
+                    <tr><td>Глаголы физического воздействия</th><td>«бить», «ударить», «оторвать», «уничтожу»</th></tr>
+                    <tr><td>Глаголы социальных отношений, влияния</th><td>«вляпать статью», «посадить», «найти управу»</th></tr>
+                    <tr><td>Конструкции с условным компонентом</th><td>«Если не сделаешь Х, то я сделаю Y»</th></tr>
                 </tbody>
             </table>
         </div>
         
         <div class="guide-category blue">
-            <h3>💭 Перед тем как отправить, подумай!</h3>
+            <h3> Перед тем как отправить, подумай!</h3>
             <ul class="checklist">
                 <li>— Хотелось бы тебе, чтобы твои близкие получили такое же сообщение?</li>
                 <li>— Соответствует ли твоё сообщение УК и КоАП РФ?</li>
@@ -58,7 +58,7 @@
         </div>
         
         <section class="analyzer-section">
-            <h2> Интерактивная проверка текста</h2>
+            <h2>🔍 Интерактивная проверка текста</h2>
             <p class="analyzer-desc">Введите текст (сообщение, пост, комментарий), и система предварительно оценит, содержит ли он признаки вербальной угрозы или противоправных призывов.</p>
             
             <div class="analyzer-input">
@@ -77,89 +77,86 @@
         <p>© 2026 Судебная лингвистическая экспертиза | Учебный проект</p>
     </footer>
 
-    <script src="script.js"></script>
     <script>
 
-const CONFIG = {
-    markers: [
-        { name: 'Прямые угрозы', weight: 30, list: ['уничтожу', 'убью', 'зарежу', 'пристрелю', 'взорву', 'подорву', 'растерзаю', 'ликвидирую', 'прикончу', 'задушу', 'забью', 'прибью'] },
-        { name: 'Косвенные угрозы', weight: 15, list: ['пожалеешь', 'последствия', 'будешь отвечать', 'расплатишься', 'тебе не поздоровится', 'ты ответишь', 'пеняй на себя'] },
-        { name: 'Лексика насилия', weight: 20, list: ['смерть', 'кровь', 'убийство', 'насилие', 'расправа', 'возмездие', 'агрессия', 'жестокость'] },
-        { name: 'Императивные маркеры', weight: 25, list: ['долой', 'вперёд', 'прочь', 'вон', 'хватит', 'требуется', 'следует', 'обязаны', 'должны', 'прекратите', 'перестаньте', 'отойди', 'уйди'] },
-        { name: 'Побудительные конструкции', weight: 15, list: ['давай', 'давайте', 'призываю', 'требую', 'приказываю', 'умоляю', 'прошу'] }
-    ],
-    highThreat: 60,
-    mediumThreat: 30
-};
-
-function findMarkers(text, markersList) {
-    return markersList.filter(marker => text.includes(marker));
-}
-
-function calculateThreatLevel(text, foundMarkers) {
-    let level = 0;
-    
-    for (const [index, markers] of foundMarkers.entries()) {
-        level += markers.length * CONFIG.markers[index].weight;
-    }
-    
-    return Math.min(level, 100);
-}
-
-function getThreatLevel(score) {
-    if (score >= CONFIG.highThreat) {
-        return { class: 'high', text: 'ВЫСОКИЙ', conclusion: 'Текст содержит явные признаки угрозы или призыва. Рекомендуется воздержаться от публикации.' };
-    } else if (score >= CONFIG.mediumThreat) {
-        return { class: 'medium', text: 'СРЕДНИЙ', conclusion: 'Текст содержит отдельные маркеры, которые могут быть интерпретированы как угроза.' };
-    } else {
-        return { class: 'low', text: 'НИЗКИЙ', conclusion: 'Явных признаков угрозы не обнаружено.' };
-    }
-}
+        const CONFIG = {
+            markers: [
+                { name: 'Прямые угрозы', weight: 30, list: ['уничтожу', 'убью', 'зарежу', 'пристрелю', 'взорву', 'подорву', 'растерзаю', 'ликвидирую', 'прикончу', 'задушу', 'забью', 'прибью'] },
+                { name: 'Косвенные угрозы', weight: 15, list: ['пожалеешь', 'последствия', 'будешь отвечать', 'расплатишься', 'тебе не поздоровится', 'ты ответишь', 'пеняй на себя'] },
+                { name: 'Лексика насилия', weight: 20, list: ['смерть', 'кровь', 'убийство', 'насилие', 'расправа', 'возмездие', 'агрессия', 'жестокость'] },
+                { name: 'Императивные маркеры', weight: 25, list: ['долой', 'вперёд', 'прочь', 'вон', 'хватит', 'требуется', 'следует', 'обязаны', 'должны', 'прекратите', 'перестаньте', 'отойди', 'уйди'] },
+                { name: 'Побудительные конструкции', weight: 15, list: ['давай', 'давайте', 'призываю', 'требую', 'приказываю', 'умоляю', 'прошу'] }
+            ],
+            highThreat: 60,
+            mediumThreat: 30
+        };
         
-function analyzeText() {
-    const text = document.getElementById('userText').value;
-    
-    if (!text.trim()) {
-        alert('Введите текст для анализа');
-        return;
-    }
-    
-    const lowerText = text.toLowerCase();
-    const exclamationCount = (text.match(/\!/g) || []).length;
-    
-    const foundMarkers = CONFIG.markers.map(marker => findMarkers(lowerText, marker.list));
-    
-    const threatScore = calculateThreatLevel(lowerText, foundMarkers, exclamationCount);
-    const threatInfo = getThreatLevel(threatScore);
-    
-    const markersReport = CONFIG.markers.map((marker, index) => {
-        const found = foundMarkers[index];
-        return found.length ? `<p><strong>${marker.name}:</strong> ${found.join(', ')}</p>` : '';
-    }).join('');
-    
-    const noMarkersFound = !markersReport && !hasImperative && exclamationCount === 0;
-    const emptyReport = noMarkersFound ? '<p>⚠️ Явных маркеров не обнаружено</p>' : '';
-    
-    document.getElementById('analysisResult').style.display = 'block';
-    document.getElementById('resultContent').innerHTML = `
-        <div class="threat-meter ${threatInfo.class}">
-            <span class="meter-label">Уровень угрозы: ${threatInfo.text}</span>
-            <div class="meter-bar"><div class="meter-fill ${threatInfo.class}" style="width: ${threatScore}%"></div></div>
-            <span class="meter-value">${threatScore}%</span>
-        </div>
-        <div class="details">
-            <h4> Обнаруженные маркеры:</h4>
-            ${markersReport}
-            ${emptyReport}
-        </div>
-        <div class="conclusion ${threatInfo.class}">
-            <strong> Заключение:</strong> ${threatInfo.conclusion}
-        </div>
+        function findMarkers(text, markersList) {
+            return markersList.filter(marker => text.includes(marker));
+        }
+
+        function calculateThreatLevel(foundMarkers) {
+            let level = 0;
+            for (let i = 0; i < foundMarkers.length; i++) {
+                level += foundMarkers[i].length * CONFIG.markers[i].weight;
+            }
+            return Math.min(level, 100);
+        }
+
+        function getThreatLevel(score) {
+            if (score >= CONFIG.highThreat) {
+                return { class: 'high', text: 'ВЫСОКИЙ', conclusion: 'Текст содержит явные признаки угрозы или призыва. Рекомендуется воздержаться от публикации.' };
+            } else if (score >= CONFIG.mediumThreat) {
+                return { class: 'medium', text: 'СРЕДНИЙ', conclusion: 'Текст содержит отдельные маркеры, которые могут быть интерпретированы как угроза.' };
+            } else {
+                return { class: 'low', text: 'НИЗКИЙ', conclusion: 'Явных признаков угрозы не обнаружено.' };
+            }
+        }
+
+        function analyzeText() {
+
+            const text = document.getElementById('userText').value;
+
+            if (!text.trim()) {
+                alert('Введите текст для анализа');
+                return;
+            }
+
+            const lowerText = text.toLowerCase();
+
+            const foundMarkers = CONFIG.markers.map(marker => findMarkers(lowerText, marker.list));
+
+            const threatScore = calculateThreatLevel(foundMarkers);
+            const threatInfo = getThreatLevel(threatScore);
+
+            const markersReport = CONFIG.markers.map((marker, index) => {
+                const found = foundMarkers[index];
+                return found.length ? `<p><strong>${marker.name}:</strong> ${found.join(', ')}</p>` : '';
+            }).join('');
+
+            const hasAnyMarkers = CONFIG.markers.some((_, i) => foundMarkers[i].length > 0);
+            const emptyReport = !hasAnyMarkers ? '<p>⚠️ Явных маркеров не обнаружено</p>' : '';
+
+            document.getElementById('analysisResult').style.display = 'block';
+            document.getElementById('resultContent').innerHTML = `
+                <div class="threat-meter ${threatInfo.class}">
+                    <span class="meter-label">Уровень угрозы: ${threatInfo.text}</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill ${threatInfo.class}" style="width: ${threatScore}%"></div>
+                    </div>
+                    <span class="meter-value">${threatScore}%</span>
+                </div>
+                <div class="details">
+                    <h4>🔍 Обнаруженные маркеры:</h4>
+                    ${markersReport}
+                    ${emptyReport}
+                </div>
+                <div class="conclusion ${threatInfo.class}">
+                    <strong> Заключение:</strong> ${threatInfo.conclusion}
+                </div>
+
+        document.getElementById('analyzeBtn').addEventListener('click', analyzeText);
         
-    `;
-}
- document.getElementById('analyzeBtn').addEventListener('click', analyzeText);
-});
     </script>
 </body>
 </html>
