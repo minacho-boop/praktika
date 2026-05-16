@@ -140,6 +140,10 @@ h4 {
     border: 1px solid #d0d7de;
 }
 
+.stages-section {
+    font-size: 0.85rem;  /* или 14px, 0.9rem и т.д. */
+}
+
 .highlight {
     background: #f8f9fa;
     border-left: 4px solid #c9a03d;
