@@ -36,7 +36,7 @@ nav {
     color: #ffffff;
     font-size: 1.3rem;
     font-weight: bold;
-    font-family: 'Times New Roman', serif;
+    font-family: "Gill Sans", sans-serif;
     letter-spacing: 0.5px;
 }
 
@@ -55,7 +55,7 @@ nav a {
     padding: 12px 16px;
     display: inline-block;
     transition: background 0.2s;
-    font-family: 'Segoe UI', 'Times New Roman', serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 nav a:hover {
