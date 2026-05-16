@@ -135,8 +135,8 @@ h4 {
 .stages-section, .table-section, .chart-section, 
 .analyzer-section, .cases-section, .facts-section {
     background: #ffffff;
-    padding: 20px;
-    margin-bottom: 25px;
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #d0d7de;
 }
 
