@@ -15,7 +15,7 @@ body {
 
 
 nav {
-    background: #1a3a5c;
+    background: #552E3B;
     padding: 0;
     position: sticky;
     top: 0;
@@ -33,7 +33,7 @@ nav {
 }
 
 .logo {
-    color: #ffffff;
+    color: #F8EFA3;
     font-size: 1.3rem;
     font-weight: bold;
     font-family: Verdana, Geneva, sans-serif;
@@ -59,13 +59,13 @@ nav a {
 }
 
 nav a:hover {
-    background: #0f2b44;
+    background: #5F3B2F;
     text-decoration: underline;
 }
 
 nav a.active {
-    background: #c9a03d;
-    color: #1a3a5c;
+    background: #85464E;
+    color: #F8EFA3;
     font-weight: bold;
 }
 
@@ -80,7 +80,7 @@ nav a.active {
 h1 {
     font-size: 2rem;
     font-weight: normal;
-    color: #1a3a5c;
+    color: #5F3B2F;
     border-bottom: 2px solid #c9a03d;
     padding-bottom: 10px;
     margin-bottom: 25px;
@@ -90,7 +90,7 @@ h1 {
 h2 {
     font-size: 1.5rem;
     font-weight: normal;
-    color: #1a3a5c;
+    color: #5F3B2F;
     border-left: 4px solid #c9a03d;
     padding-left: 12px;
     margin: 25px 0 15px 0;
