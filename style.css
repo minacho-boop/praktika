@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Times New Roman', 'Georgia', 'Segoe UI', serif;
+    font-family: "Gill Sans", sans-serif;
     background: #ffffff;
     color: #000000;
     line-height: 1.5;
@@ -84,7 +84,7 @@ h1 {
     border-bottom: 2px solid #c9a03d;
     padding-bottom: 10px;
     margin-bottom: 25px;
-    font-family: 'Times New Roman', serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 h2 {
@@ -94,7 +94,7 @@ h2 {
     border-left: 4px solid #c9a03d;
     padding-left: 12px;
     margin: 25px 0 15px 0;
-    font-family: 'Times New Roman', serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 h3 {
@@ -334,7 +334,7 @@ tr:nth-child(even) {
     width: 200px;
     font-size: 14px;
     cursor: pointer;
-    font-family: 'Times New Roman', serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 .analyzer-input button:hover {
